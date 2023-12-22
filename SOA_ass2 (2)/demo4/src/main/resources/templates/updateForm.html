@@ -1,0 +1,63 @@
+<!-- updateForm.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>Update Student</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Add Student</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/add-students-form">Add multiple students</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/search-by-gpa">Search by GPA</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/search-by-firstname">Search by First Name</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/list">List Students</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+
+<h2>Update Student Information</h2>
+
+<!-- Display error message if any -->
+<p th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></p>
+
+<form th:object="${student}" th:action="@{'/update/' + ${student.id}}" method="post">
+    <label>ID: <span th:text="${student.id}"></span></label>
+    <label>First Name: </label>
+        <input type="text" th:field="*{firstName}"/>
+    <label>Last Name:  </label>
+        <input type="text" th:field="*{lastName}"/>
+    <label>Gender:  </label>
+        <input type="text" th:field="*{gender}"/>
+    <label>GPA:        </label>
+        <input type="text" th:field="*{gpa}"/>
+    <label>Level:     </label>
+        <input type="text" th:field="*{level}"/>
+    <label>Address:  </label>
+        <input type="text" th:field="*{address}"/>
+    <button type="submit">Update Student</button>
+</form>
+
+
+</body>
+</html>
